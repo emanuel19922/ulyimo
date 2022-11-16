@@ -7,7 +7,7 @@ export const CartWidget = () => {
     <div className='navigation-logopng'>
 <img className='navigation-logo' src={logocarrito} alt="" />
 <div className='navnavnav'>
-<h1>category</h1>
+
 </div>
     </div>
    

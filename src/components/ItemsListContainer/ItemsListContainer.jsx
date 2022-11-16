@@ -39,7 +39,7 @@ const ItemsListContainer = (props) => {
     }, [categoriName]);
 
     return (
-        <div>
+        <div className='itemListContainer'>
 
             <ItemList product={product} />
 

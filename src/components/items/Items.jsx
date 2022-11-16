@@ -1,4 +1,4 @@
-
+import '../items/_items.scss'
 
 
 const Items = ({produs}) => {
@@ -6,7 +6,7 @@ const Items = ({produs}) => {
     
   return (
  
-    <div>
+    <div className='ItemsProduct'>
         <h2>{produs.id}</h2>
         <h2>{produs.name}</h2>
         <h2>{produs.color}</h2>

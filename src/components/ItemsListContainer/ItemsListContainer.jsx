@@ -1,12 +1,50 @@
 import React from 'react'
+import { useEffect, useState } from "react";
+import { data } from "../../data/Data";
+import { Link } from "react-router-dom";
+import ItemList from '../itemlist/ItemList';
 import '../ItemsListContainer/_ItemsListContainer.scss'
+import Items from '../items/Items';
+import { useParams } from 'react-router-dom';
+
 
 const ItemsListContainer = (props) => {
-  return (
-    <div className='message-greeting-container'>
-        <h2 className='message'> {props.name} </h2>
-    </div>
-  )
-} 
+    const [product, setproduct] = useState([])
+    //   aca estamos llamando al categoriname que esta en app.js en el link
+    const { categoriName } = useParams();
+   
+
+    const getData = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (categoriName) {
+                const filtradodedata = data.filter((productos) => {
+                    console.log(productos.name)
+                    return productos.name === categoriName
+                
+                })
+                resolve(filtradodedata)
+            } else {
+                resolve(data);
+            }
+
+
+
+        }, 1000);
+    })
+    useEffect(() => {
+
+        getData
+            .then((response) => { setproduct(response); })
+            .catch(erroe => console.log(erroe))
+    }, [categoriName]);
+
+    return (
+        <div>
+
+            <ItemList product={product} />
+
+        </div>
+    )
+}
 
 export default ItemsListContainer

@@ -6,19 +6,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
 import { CartWidget } from "../CartWidget/CartWidget";
 import ImageLogo from "../ImageLogo/ImageLogo";
 import '../NavBar/_NavBar.scss';
+import {Link} from "react-router-dom";
 
 function OffcanvasExample() {
   return (
     <>
       {[  'sm'].map((expand) => (
+     
         <Navbar key={expand} bg="light" expand={expand} className="mb-3">
           <Container  >
             {/* aca  esta la imagen importada de cartwidget */}
-            <Navbar.Brand href="#"> <ImageLogo/> </Navbar.Brand>
+            <Navbar.Brand as={Link} to='/'> <ImageLogo/> </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -32,8 +33,9 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body >
                 <Nav className="justify-content-end flex-grow-1 pe-3 "  >
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
+                <Link to='/' className="nav-link"> Home </Link>
+          <Link to='/product/jeans' className="nav-link">   Link </Link> 
+          <Link to='/product/remera' className="nav-link">   Link2 </Link> 
                   <NavDropdown
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -59,7 +61,7 @@ function OffcanvasExample() {
                 </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
-           <a href=""> <CartWidget/> </a>
+            <Link  to='/CartWidget'>  <CartWidget/> </Link>
           </Container>
         </Navbar>
       ))}

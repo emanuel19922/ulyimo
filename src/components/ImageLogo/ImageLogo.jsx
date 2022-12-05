@@ -6,7 +6,7 @@ import '../ImageLogo/_ImageLogo.scss'
 
  export const ImageLogo = props => {
   return (
-    <div>
+    <div >
         <img className='image-logo-nav' src={imagelogo} alt="" />
     </div>
   )

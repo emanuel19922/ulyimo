@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import { data } from "../../data/Data";
-import { Link } from "react-router-dom";
+
 import ItemList from '../itemlist/ItemList';
 import '../ItemsListContainer/_ItemsListContainer.scss'
 import Items from '../items/Items';
@@ -13,26 +13,30 @@ const ItemsListContainer = (props) => {
     //   aca estamos llamando al categoriname que esta en app.js en el link
     const { categoriName } = useParams();
    
+    
 
     const getData = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (categoriName) {
+               
                 const filtradodedata = data.filter((productos) => {
-                    console.log(productos.name)
+                    
                     return productos.name === categoriName
                 
                 })
                 resolve(filtradodedata)
+                
             } else {
                 resolve(data);
             }
 
 
 
-        }, 1000);
+        }, );
     })
-    useEffect(() => {
 
+    useEffect(() => {
+     
         getData
             .then((response) => { setproduct(response); })
             .catch(erroe => console.log(erroe))

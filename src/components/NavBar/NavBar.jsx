@@ -10,8 +10,13 @@ import { CartWidget } from "../CartWidget/CartWidget";
 import ImageLogo from "../ImageLogo/ImageLogo";
 import '../NavBar/_NavBar.scss';
 import {Link} from "react-router-dom";
+import logocarrito from '../../assets/navimage-shipments.png'
+import { useContext } from "react";
+import { Datacontex } from '../../context/CartProvaider';
+
 
 function OffcanvasExample() {
+  const { cart, addtocart } = useContext(Datacontex)
   return (
     <>
       {[  'sm'].map((expand) => (
@@ -61,7 +66,9 @@ function OffcanvasExample() {
                 </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
-            <Link  to='/CartWidget'>  <CartWidget/> </Link>
+            <Link  to='/CartWidget'>  
+            <img className='navigation-logo' src={logocarrito} alt="" /></Link>
+            <h1>{cart.length} </h1>
           </Container>
         </Navbar>
       ))}

@@ -6,6 +6,7 @@ return(
 
 product.map((produ)=>  <Items key={produ.id} produs={produ} />
 )
+
 )
     
   

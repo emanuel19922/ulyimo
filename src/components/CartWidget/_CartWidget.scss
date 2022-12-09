@@ -1,4 +1,25 @@
-.navigation-logo{
-    width: 100px;
+.containerproducts{
+ display: flex;
+justify-content: space-around;
+    
+   
 
+
+ 
+    &_items{
+        display: flex;
+        border: solid 1px black;
+        margin: 5px;
+        flex-direction: column;
+        align-items: center;
+      
+    }
 }
+.containerproducts_forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 23px;
+   }
+
+

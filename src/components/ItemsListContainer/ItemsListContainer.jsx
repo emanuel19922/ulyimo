@@ -6,7 +6,7 @@ import ItemList from '../itemlist/ItemList';
 import '../ItemsListContainer/_ItemsListContainer.scss'
 import Items from '../items/Items';
 import { useParams } from 'react-router-dom';
-
+import {getFirestore, collection, getDocs,query,where} from "firebase/firestore"
 
 const ItemsListContainer = (props) => {
     const [product, setproduct] = useState([])
@@ -15,32 +15,56 @@ const ItemsListContainer = (props) => {
    
     
 
-    const getData = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (categoriName) {
-               
-                const filtradodedata = data.filter((productos) => {
-                    
-                    return productos.name === categoriName
-                
-                })
-                resolve(filtradodedata)
-                
-            } else {
-                resolve(data);
-            }
+   
 
-
-
-        }, );
+const getproduct = () =>{
+    const db = getFirestore()
+    const querySnapshot = collection(db,'items')
+     if(categoriName){
+         const querifilter = query(querySnapshot,where("title","==", categoriName))
+           
+    getDocs(querifilter)
+    .then((response) =>{
+        const produts = response.docs.map((item)=>{
+       
+            return {id: item.id,...item.data()}
+            
+        })
+        
+     setproduct(produts)
+    })
+    .catch((error)=>{
+        console.log(error)
     })
 
-    useEffect(() => {
-     
-        getData
-            .then((response) => { setproduct(response); })
-            .catch(erroe => console.log(erroe))
-    }, [categoriName]);
+
+} else{
+
+
+    
+    getDocs(querySnapshot)
+    .then((response) =>{
+        const produts = response.docs.map((item)=>{
+       
+            return {id: item.id,...item.data()}
+            
+        })
+      
+     setproduct(produts)
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+
+}
+}
+
+    useEffect(()=>{
+      getproduct()
+    },[categoriName])
+
+
+  
 
     return (
         <div className='itemListContainer'>

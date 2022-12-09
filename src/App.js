@@ -9,8 +9,17 @@ import ComponentsContador from './components/componenteContador/ComponentsContad
 import ItemdetailContainet from './components/ItemDetailcontainer/ItemdetailContainet';
 // aca importo el contexxxxx
 import CartProvaider from './context/CartProvaider'
+
+// 
+
+
+
+
+
+
+
 //
-import Fetch from './components/Fetch/Fetch';
+
 function App() {
   
   return (
@@ -28,8 +37,8 @@ function App() {
           <Route path='CartWidget' element={<CartWidget />} />
         </Routes>
       
-     <ComponentsContador/>
-    <Fetch/>
+   
+    
     </BrowserRouter>
     </CartProvaider>
         

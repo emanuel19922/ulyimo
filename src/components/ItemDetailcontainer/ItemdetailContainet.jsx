@@ -4,25 +4,27 @@ import { data } from "../../data/Data";
 import Itemforproducts from "../Itemforproduct/Itemforproducts";
 
 import { useEffect,useState } from "react";
-
+import {doc,getDoc,getFirestore} from "firebase/firestore"
 const ItemdetailContainet = () => {
-
     const [productid,setproductid] = useState([]);
     
     const {id} = useParams();
     
-    const getdata = () =>{
-   
-    const dataforfilter = data.filter((datas)=>{
+
+const getproduct = ()=>{
+    const db = getFirestore();
+    const query = doc(db, 'items' ,id);
+    getDoc(query)
+    .then((response)=>{
        
-     return datas.id == id ;
-     
+setproductid({id:response.id, ...response.data() });
+
     })
-    setproductid(...dataforfilter)
-    
 }
+
+
 useEffect(()=>{
-    getdata();
+    getproduct();
     
 },[id])
 

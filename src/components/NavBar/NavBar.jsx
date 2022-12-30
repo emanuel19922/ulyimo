@@ -9,7 +9,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { CartWidget } from "../CartWidget/CartWidget";
 import ImageLogo from "../ImageLogo/ImageLogo";
 import '../NavBar/_NavBar.scss';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import logocarrito from '../../assets/navimage-shipments.png'
 import { useContext } from "react";
 import { Datacontex } from '../../context/CartProvaider';
@@ -19,12 +19,12 @@ function OffcanvasExample() {
   const { cart, addtocart } = useContext(Datacontex)
   return (
     <>
-      {[  'sm'].map((expand) => (
-     
-        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+      {['sm'].map((expand) => (
+
+        <Navbar key={expand} bg="light" expand={expand} className="">
           <Container  >
             {/* aca  esta la imagen importada de cartwidget */}
-            <Navbar.Brand as={Link} to='/'> <ImageLogo/> </Navbar.Brand>
+            <Navbar.Brand as={Link} to='/'> <ImageLogo /> </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -38,9 +38,9 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body >
                 <Nav className="justify-content-end flex-grow-1 pe-3 "  >
-                <Link to='/' className="nav-link"> Home </Link>
-          <Link to='/product/jeans' className="nav-link"> jeans </Link> 
-          <Link to='/product/remera' className="nav-link">   remeras </Link> 
+                  <Link to='/' className="nav-link"> Home </Link>
+                  <Link to='/product/jeans' className="nav-link"> jeans </Link>
+                  <Link to='/product/remera' className="nav-link">   remeras </Link>
                   <NavDropdown
                     title="Dropdown"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -66,8 +66,8 @@ function OffcanvasExample() {
                 </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
-            <Link  to='/CartWidget'>  
-            <img className='navigation-logo' src={logocarrito} alt="" /></Link>
+            <Link to='/CartWidget'>
+              <img className='navigation-logo' src={logocarrito} alt="" /></Link>
             <h1>{cart.length} </h1>
           </Container>
         </Navbar>

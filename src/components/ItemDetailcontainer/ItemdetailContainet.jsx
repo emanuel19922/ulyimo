@@ -3,37 +3,37 @@ import { useParams } from "react-router-dom";
 import { data } from "../../data/Data";
 import Itemforproducts from "../Itemforproduct/Itemforproducts";
 
-import { useEffect,useState } from "react";
-import {doc,getDoc,getFirestore} from "firebase/firestore"
+import { useEffect, useState } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 const ItemdetailContainet = () => {
-    const [productid,setproductid] = useState([]);
-    
-    const {id} = useParams();
-    
+    const [productid, setproductid] = useState([]);
 
-const getproduct = ()=>{
-    const db = getFirestore();
-    const query = doc(db, 'items' ,id);
-    getDoc(query)
-    .then((response)=>{
-       
-setproductid({id:response.id, ...response.data() });
-
-    })
-}
+    const { id } = useParams();
 
 
-useEffect(()=>{
-    getproduct();
-    
-},[id])
+    const getproduct = () => {
+        const db = getFirestore();
+        const query = doc(db, 'items', id);
+        getDoc(query)
+            .then((response) => {
+
+                setproductid({ id: response.id, ...response.data() });
+
+            })
+    }
 
 
-   return(
+    useEffect(() => {
+        getproduct();
 
-<div>  <Itemforproducts productid={productid} /></div>
+    }, [id])
 
-   )
+
+    return (
+
+        <div>  <Itemforproducts productid={productid} /></div>
+
+    )
 
 };
 

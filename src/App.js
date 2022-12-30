@@ -21,28 +21,31 @@ import CartProvaider from './context/CartProvaider'
 //
 
 function App() {
-  
+
   return (
-    <CartProvaider>
-    <BrowserRouter>
-  
-    <NavBar />
- 
-    
-        < Routes>
-          <Route path='/' exact element={<ItemsListContainer />} />
-          <Route path='/product/:categoriName' element={<ItemsListContainer />} />
-          <Route path='/product/:categoriName' element={<ItemsListContainer />} />
-          <Route path='/filter/:id'  element={  <ItemdetailContainet/>} />
-          <Route path='CartWidget' element={<CartWidget />} />
-        </Routes>
-      
-   
-    
-    </BrowserRouter>
-    </CartProvaider>
-        
-    
+    <div>
+
+
+
+      <CartProvaider>
+
+        <BrowserRouter>
+          <NavBar />
+
+          < Routes>
+            <Route path='/' exact element={<ItemsListContainer />} />
+            <Route path='/product/:categoriName' element={<ItemsListContainer />} />
+            <Route path='/product/:categoriName' />
+            <Route path='/filter/:id' element={<ItemdetailContainet />} />
+            <Route path='CartWidget' element={<CartWidget />} />
+
+          </Routes>
+        </BrowserRouter>
+
+      </CartProvaider>
+
+    </div>
+
   );
 }
 
